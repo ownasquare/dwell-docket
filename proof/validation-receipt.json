@@ -1,0 +1,55 @@
+{
+  "app": "dwell-docket",
+  "claim_id": "20260727T140411-0700-lane14-dwell-docket",
+  "created_at": "2026-07-27T21:28:23Z",
+  "tests_passed": true,
+  "secret_scan_passed": true,
+  "license_check_passed": true,
+  "dependency_audit": {
+    "status": "passed",
+    "known_vulnerabilities": 0,
+    "runtime_dependencies": 0
+  },
+  "browser_proof": {
+    "status": "passed",
+    "runner": "Playwright",
+    "cases_passed": 12,
+    "viewports": [
+      "desktop",
+      "tablet",
+      "mobile"
+    ],
+    "color_schemes": [
+      "light",
+      "dark"
+    ],
+    "axe_violations": 0,
+    "application_console_problems": 0,
+    "screenshots_inspected": 6,
+    "in_app_browser": "Localhost was blocked by the in-app client before page load; no in-app proof claimed."
+  },
+  "package_smoke": {
+    "status": "passed",
+    "tarball_install": true,
+    "health_response": "ok",
+    "html_title": "Dwell Docket — Find detention gaps"
+  },
+  "commands": [
+    "npm run validate",
+    "npm pack --dry-run",
+    "npm pack --pack-destination <isolated-temp-directory>",
+    "npm install --ignore-scripts <isolated-tarball>",
+    "node node_modules/dwell-docket/server.mjs --port 4182",
+    "curl --fail --silent --show-error http://127.0.0.1:4182/healthz",
+    "curl --fail --silent --show-error http://127.0.0.1:4182/"
+  ],
+  "proof_boundaries": {
+    "local": "passed",
+    "github": "pending",
+    "hosted": "none",
+    "production": "none",
+    "provider": "none",
+    "payment": "none",
+    "demand": "public pain and workaround evidence only"
+  }
+}
