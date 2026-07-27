@@ -1,0 +1,220 @@
+---
+description: "Completed Dwell Docket Lane 14 product and release handoff"
+alwaysApply: false
+---
+
+# Inventory Next Items
+
+No unresolved product integration item was found.
+
+Evidence scanned:
+
+- **Who:** Dwell Docket browser surface and local static server.
+- **What:** One-file empty, processing, result, recovery, download, responsive,
+  appearance, and accessibility paths.
+- **How discovered:** Unit tests, package smoke, local HTTP readback, Playwright
+  across six viewport/appearance projects, axe scans, console assertions, and
+  visual inspection of all six result screenshots.
+- **Where:** `index.html`, `server.mjs`, `src/`, `tests/`, `proof/`, and
+  `docs/`.
+- **When:** File choice, action click, parsing, row classification, download,
+  invalid input, viewport change, and automatic color-scheme change.
+- **Detailed result:** The full local product path is integrated. There is no
+  back-end API, auth transition, provider, hosted environment, payment path, or
+  second product surface to reconcile.
+- **Acceptance criteria:** The 13 unit tests and 12 Playwright cases pass; axe
+  and application console findings are zero; package tarball installs and
+  serves; local and public Git SHAs match at publication.
+- **Definition of done:** Public `main`, immutable lane record, complete state,
+  validation receipt, completion documentation, and cross-harness handoff all
+  agree.
+- **Reason no item exists:** Scope was deliberately limited to one
+  deterministic browser-local transformation.
+- **Priority:** No P0-P4 product issue remains.
+- **Regression prevention:** Keep exact schema tests, simplicity lint,
+  Playwright six-project matrix, download assertions, and manual screenshot
+  inspection.
+- **Test policy:** Node tests cover the transformation; Playwright covers all
+  E2E. Cypress E2E must never be added.
+- **Audit policies:** Ten-second simplicity gate, local-data boundary, secret
+  scan, compatible-license audit, dependency audit, responsive/appearance
+  proof, GitHub SHA readback, and proof-layer separation.
+- **Other considerations:** Contract-specific eligibility, hosted storage,
+  accounts, integrations, billing, and outreach are deliberately outside this
+  completed app and require new authorization and evidence.
+
+# 1. Project Identity & Strategic Context
+
+**Freshness: High - recently verified in this session.**
+
+Dwell Docket is Lane 14's accepted app for small-carrier and dispatcher
+after-the-fact detention reconciliation. One stop CSV becomes a local docket of
+unrecovered, evidence-gap, recovered, no-detention, and invalid rows. Success
+means one screen, one input surface, one oversized action, browser-local
+processing, downloadable output, no credentials, and no unsupported commercial
+claim.
+
+The repository is
+`/Users/fortunevieyra/Documents/Github/ai-projects/factory-apps/lane-14/dwell-docket`
+on `main`. The public target is
+`https://github.com/ownasquare/dwell-docket`. Node 22+, vanilla ESM, a minimal
+static server, Node test runner, TypeScript checkJs analysis, Prettier, and
+Playwright are used. Runtime dependencies are zero.
+
+# 2. Current System State & Architecture Map
+
+**Freshness: High - recently verified in this session.**
+
+Implemented flow:
+
+`CSV -> File.text -> src/csv.js -> src/detention.js -> src/app.js -> DOM + Blob download`
+
+Working:
+
+- exact 11-heading CSV contract;
+- safe quoted-field parser and spreadsheet-formula-neutralizing serializer;
+- deterministic monetary and proof-gap classification;
+- friendly file/type/schema recovery;
+- automatic light/dark responsive UI;
+- accessible focusable mobile table;
+- full result download and first-50-row preview;
+- local server health and path-containment checks.
+
+Broken or partial: none in current scope. Deliberately deferred: hosting,
+storage, accounts, providers, payments, live timing, TMS integration, and
+contract-specific rules.
+
+# 3. Critical Decisions & Reasoning History
+
+**Freshness: High - recently verified in this session.**
+
+Browser-local processing was chosen over an API to keep data private and the
+core credential-free. After-the-fact reconciliation was chosen over a live
+timer to avoid colliding with existing timer products. Exact headings were
+chosen over a mapping UI because mapping violates the one-input gate.
+Deterministic arithmetic was chosen over AI because money calculations require
+reproducibility. Proof gaps stay visible as review states instead of erasing
+calculated value.
+
+# 4. Recent Work & Iteration Log (High Priority)
+
+**Freshness: High - recently verified in this session.**
+
+The session qualified 11 candidates, researched public pain, accepted Dwell
+Docket at pain `32/35`, real pain `7/7`, idea `32/35`, hard floors `5/5`,
+weighted `4.45/5`, and niche `65/75`, and created claim
+`20260727T140411-0700-lane14-dwell-docket`.
+
+TDD produced 13 passing unit tests. The first E2E run found a server root
+normalization bug. The next exposed four light-mode contrast failures and an
+unfocusable mobile scroll region. All were corrected. A later repeated gate
+detected another app, Addendum Echo, on shared port 4173; Playwright moved to
+lane-specific port 41714 to prevent wrong-app reuse. Final validation passed.
+
+Validated implementation and first public SHA:
+`91d1bc6a72ad0f30e22519c695668008e1d29f06`.
+
+# 5. Testing, Validation & Quality Framework
+
+**Freshness: High - recently verified in this session.**
+
+- `npm run validate`: passed.
+- Node tests: 13 passed.
+- Playwright: 12 passed, desktop/tablet/mobile by light/dark.
+- Axe: zero violations on empty and result states.
+- Application console: zero errors or warnings.
+- Dependency audit: zero known vulnerabilities.
+- License audit: ten development dependency records passed.
+- Secret-shape scan: passed.
+- Tarball install/start/health/HTML smoke: passed.
+- Six result screenshots: manually inspected.
+
+The in-app Browser client blocked localhost before page load, so no in-app
+browser proof is claimed. Playwright provides the verified browser proof.
+
+# 6. Debugging History & Failure Modes
+
+**Freshness: High - recently verified in this session.**
+
+`fileURLToPath(new URL(".", import.meta.url))` retained a trailing separator,
+causing the valid resolved file prefix check to compare against a double
+separator and return 403. Wrapping the root in `path.resolve` fixed it.
+
+Initial status/pill colors missed WCAG AA by narrow margins; darker light-mode
+tokens fixed them. Axe identified the horizontal mobile table as inaccessible;
+`tabIndex=0` and an accessible label fixed it.
+
+Never set `reuseExistingServer: true` on common port 4173: another factory app
+can satisfy the health URL and create false validation. Port 41714 is reserved
+in this repository's Playwright config.
+
+# 7. Established Processes & Effective Patterns
+
+**Freshness: High - recently verified in this session.**
+
+Run the lane guard before inspection, hydrate state, continue any active app,
+test the transformation first, keep the UI contract minimal, validate through
+the package script, inspect every screenshot, perform isolated tarball smoke,
+commit a clean `main`, publish through the scoped helper, independently read
+GitHub API and remote SHA, then close registry/state and write handoffs.
+
+# 8. Risks, Technical Debt & Strict Preservation Rules
+
+**Freshness: High - recently verified in this session.**
+
+Do not add uploads, analytics, accounts, credentials, API calls, settings,
+column mapping, navigation, extra primary actions, or contract eligibility
+claims without explicit scope change. Do not replace exact schema behavior with
+AI. Do not weaken formula neutralization, textContent rendering, path
+containment, the 5 MB bound, proof-layer labels, or invalid-row preservation.
+
+Known product limits are intentional: elapsed-minute calculation, exact `yes`
+proof flags, no contract-specific rounding/caps, 50-row visual preview, no
+hosted service.
+
+# 9. Key Artifacts & References
+
+**Freshness: High - recently verified in this session.**
+
+- Claim:
+  `/Users/fortunevieyra/Documents/Github/ai-projects/docs/1000-apps-100-days/registry/claims/20260727T140411-0700-lane14-dwell-docket.md`
+- Lane state:
+  `/Users/fortunevieyra/Documents/Github/ai-projects/docs/1000-apps-100-days/state/lane-14.json`
+- Validation receipt: `proof/validation-receipt.json`
+- Completion evidence: `docs/dwell-docket/2026-07-27-completion.md`
+- Sample: `examples/stops.csv`
+- Architecture: `docs/product/architecture-and-decisions.md`
+- Screenshots: `proof/screenshots/`
+- Public repository: `https://github.com/ownasquare/dwell-docket`
+
+# 10. Next Steps & Prioritized Backlog
+
+**Freshness: High - recently verified in this session.**
+
+Next run mode: INVENTORY_REFRESH_REQUIRED
+
+The app has no remaining product backlog. The next scheduled Lane 14 run must
+read complete state, rebuild the global uniqueness inventory, and qualify a
+different problem before any new claim. Do not extend Dwell Docket merely to
+fill time. Any commercial validation, hosted version, or user contact requires
+fresh authorization.
+
+# 11. Continuation & Working Style Instructions
+
+**Freshness: High - recently verified in this session.**
+
+Treat lane state, immutable records, current Git, and live GitHub readback as
+authority. Preserve the one-screen hard gate and truthfully separate local,
+GitHub, hosted, production, provider, payment, and demand proof. Use
+secret-safe execution for every command. Prefer tested small changes and
+fail closed on wrong-app, wrong-port, wrong-repository, or SHA mismatch.
+
+# 12. Confidence & Freshness Assessment
+
+**Freshness: High - recently verified in this session.**
+
+Sections 1-11 are high confidence from current source, passing automated gates,
+manual screenshot inspection, Git publication, and remote/API readback.
+Market willingness to pay remains low-confidence and intentionally labeled as
+a hypothesis; hosted, production, provider, payment, buyer, revenue, and usage
+proof do not exist.

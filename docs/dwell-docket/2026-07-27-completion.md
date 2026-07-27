@@ -32,8 +32,8 @@ secondary page, paid provider, or application API is present.
 - Dependency audit: zero known vulnerabilities at the release gate.
 - Runtime dependencies: zero.
 
-The exact final validation commands and Git commit/publication evidence are
-recorded in `proof/validation-receipt.json` after the release gate.
+The exact final validation commands and Git publication evidence are recorded
+in `proof/validation-receipt.json`.
 
 ## Failure correction log
 
@@ -50,7 +50,11 @@ The final matrix passed.
 ## Proof boundaries
 
 - Local proof: complete and validated.
-- GitHub publication proof: pending final release gate.
+- GitHub publication proof: public
+  `https://github.com/ownasquare/dwell-docket`, default branch `main`;
+  validated implementation commit
+  `91d1bc6a72ad0f30e22519c695668008e1d29f06` matched GitHub `main` at
+  readback.
 - Hosted proof: none; no application deployment was authorized.
 - Production proof: none.
 - Provider proof: none; no external provider is connected.

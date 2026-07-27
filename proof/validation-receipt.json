@@ -14,15 +14,8 @@
     "status": "passed",
     "runner": "Playwright",
     "cases_passed": 12,
-    "viewports": [
-      "desktop",
-      "tablet",
-      "mobile"
-    ],
-    "color_schemes": [
-      "light",
-      "dark"
-    ],
+    "viewports": ["desktop", "tablet", "mobile"],
+    "color_schemes": ["light", "dark"],
     "axe_violations": 0,
     "application_console_problems": 0,
     "screenshots_inspected": 6,
@@ -45,7 +38,7 @@
   ],
   "proof_boundaries": {
     "local": "passed",
-    "github": "pending",
+    "github": "public repository verified at validated implementation commit 91d1bc6a72ad0f30e22519c695668008e1d29f06",
     "hosted": "none",
     "production": "none",
     "provider": "none",
